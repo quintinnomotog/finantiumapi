@@ -3,13 +3,13 @@ create table if not exists tb_conta_bancaria (
     codigo_publico uuid not null default gen_random_uuid(),
     id_tipo_conta_bancaria bigint not null,
     id_pessoa_instituicao_financeira bigint not null,
-    data_abertura date not null,
+    data_abertura date null,
     saldo numeric(15,2) not null default 0,
     data_criacao timestamp default now(),
     data_edicao timestamp null,
     data_delecao timestamp null,
     constraint pk_conta_bancaria primary key (codigo),
-    constraint fk_conta_tipo_conta foreign key (id_tipo_conta_bancaria) references tb_conta_bancaria (codigo),
+    constraint fk_conta_tipo_conta foreign key (id_tipo_conta_bancaria) references tb_tipo_conta_bancaria (codigo),
     constraint fk_conta_pessoa_instituicao foreign key (id_pessoa_instituicao_financeira) references tb_pessoa (codigo)
 );
 

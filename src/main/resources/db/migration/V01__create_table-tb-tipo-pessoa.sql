@@ -1,7 +1,7 @@
 create table if not exists tb_tipo_pessoa (
     codigo bigserial not null,
     codigo_publico uuid not null default gen_random_uuid(),
-    descricao varchar(20) not null,
+    descricao varchar(60) not null,
     data_criacao timestamp default now(),
     data_edicao timestamp null,
     data_delecao timestamp null,
