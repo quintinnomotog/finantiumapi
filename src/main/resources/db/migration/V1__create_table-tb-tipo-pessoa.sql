@@ -1,5 +1,3 @@
-create extension if not exists "pgcrypto";
-
 create table if not exists tb_tipo_pessoa (
     codigo bigserial not null,
     codigo_publico uuid not null default gen_random_uuid(),
