@@ -10,10 +10,11 @@ create table if not exists tb_transacao_financeira_produto_servico (
     data_delecao timestamp null,
     constraint pk_transacao_financeira_produto_servico primary key (codigo),
     constraint fk_transacao_financeira foreign key (id_transacao_financeira) references tb_transacao_financeira (codigo),
-    constraint fk_produto_servico foreign key (id_produto_servico) references tb_produto_servico (codigo)
+    constraint fk_produto_servico foreign key (id_produto_servico) references tb_produto_servico (codigo),
+    constraint un_transacao_financeira_produto_servico unique (id_transacao_financeira, id_produto_servico, valor_unitario, data_criacao)
 );
 
-comment on table tb_transacao_financeira_produto_servico is 'Representa o relacionamento entre uma determinada Transação Financeira com os Produtos e/ou Serviços';
+comment on table  tb_transacao_financeira_produto_servico is 'Representa o relacionamento entre uma determinada Transação Financeira com os Produtos e/ou Serviços';
 comment on column tb_transacao_financeira_produto_servico.codigo is 'Identificador único da tabela (privado)';
 comment on column tb_transacao_financeira_produto_servico.codigo_publico is 'Identificador único da tabela (público)';
 comment on column tb_transacao_financeira_produto_servico.id_transacao_financeira is 'Representa a Chave Estrangeira referente a Transação Financeira.';
